@@ -15,6 +15,10 @@ func (r *CreateSessionRequest) Marshal() string {
 }
 
 func UnmarshalCreateSessionRequest(r string) (req *CreateSessionRequest, err error) {
+	if len(r) < 2 {
+		return nil, kite_common.ErrReq
+	}
+	r = r[1 : len(r)-1]
 	req = &CreateSessionRequest{}
 	err = json.Unmarshal([]byte(r), req)
 	return req, err
