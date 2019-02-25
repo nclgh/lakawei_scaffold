@@ -2,7 +2,7 @@ package passport
 
 import (
 	"encoding/json"
-	"lakawei/lakawei_scaffold/kite/kite_common"
+	"github.com/nclgh/lakawei_scaffold/kite/kite_common"
 )
 
 type CreateSessionRequest struct {
