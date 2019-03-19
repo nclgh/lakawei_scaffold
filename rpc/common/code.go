@@ -1,4 +1,4 @@
-package kite_common
+package common
 
 type RspCode int64
 
