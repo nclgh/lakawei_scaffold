@@ -11,13 +11,13 @@ var (
 )
 
 func GetRedisClient(redisServerName string) *redis.Client {
+	if cli, ok := clients[redisServerName]; ok {
+		return cli
+	}
 	c := conf.GetConfig()
 	redisAddr := c.DefaultString(fmt.Sprintf("%sRedisAddr", redisServerName), "")
 	if redisAddr == "" {
 		panic(fmt.Sprintf("can't find redis server. %v", redisServerName))
-	}
-	if cli, ok := clients[redisServerName]; ok {
-		return cli
 	}
 	cli := redis.NewClient(&redis.Options{
 		Addr: redisAddr,
